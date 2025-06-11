@@ -325,7 +325,7 @@ main .container > *:last-child,
     }
 }
 
-.katex-display {
+mjx-container[display="true"] {
     display: block;
     margin: 1em auto;
 }
