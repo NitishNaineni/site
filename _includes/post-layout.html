@@ -1,0 +1,15 @@
+---
+layout: layout.html
+---
+
+<div class="container">
+    <article>
+        <h1>{{ title }}</h1>
+        <p class="post-meta">
+            <time datetime="{{ date | htmlDateString }}"
+                >{{ date | readableDate }}</time
+            >
+        </p>
+        <div class="post-content">{{ content | safe }}</div>
+    </article>
+</div>

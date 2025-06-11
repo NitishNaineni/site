@@ -1,0 +1,8 @@
+# Node.js dependencies
+node_modules
+
+# Eleventy output folder
+_site
+
+# System files
+.DS_Store

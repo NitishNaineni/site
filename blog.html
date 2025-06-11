@@ -1,0 +1,27 @@
+---
+layout: layout.html
+title: Blog
+---
+
+<div class="container">
+    <h1>Blog</h1>
+    <p>A collection of my thoughts and writings.</p>
+
+    <section class="post-list">
+        {% for post in collections.post | reverse %}
+        <article class="post-item">
+            <h2>
+                <a href="{{ post.url }}" class="post-link"
+                    >{{ post.data.title }}</a
+                >
+            </h2>
+            <p class="post-meta">
+                <time datetime="{{ post.date | htmlDateString }}"
+                    >{{ post.date | readableDate }}</time
+                >
+            </p>
+            <p>{{ post.data.description }}</p>
+        </article>
+        {% endfor %}
+    </section>
+</div>
