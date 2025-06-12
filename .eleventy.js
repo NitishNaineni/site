@@ -3,7 +3,6 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 module.exports = function (eleventyConfig) {
   // --- Plugins ---
-  // We only need the syntax highlighter now.
   eleventyConfig.addPlugin(syntaxHighlight);
 
   // --- Passthrough Copies ---
@@ -14,7 +13,7 @@ module.exports = function (eleventyConfig) {
   // --- Date Formatting Filters ---
   eleventyConfig.addFilter("readableDate", (dateObj) => {
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat(
-      "LLLL d, yyyy",
+      "LLLL d, yyyy"
     );
   });
 
@@ -29,8 +28,6 @@ module.exports = function (eleventyConfig) {
       includes: "_includes",
       output: "_site",
     },
-    // We can rely on Eleventy's default Markdown processor
-    // and let MathJax handle the math in the browser.
-    htmlTemplateEngine: "njk",
+    htmlTemplateEngine: "liquid",
   };
 };
