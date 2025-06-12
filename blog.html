@@ -9,15 +9,15 @@ title: Blog
     <section class="post-list">
         {% for post in collections.post | reverse %}
             <article class="post-item">
-                <div class="post-header">
-                    <p class="post-meta">
-                        <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
-                    </p>
-                    <h2>
-                        <a href="{{ post.url }}" class="post-link">{{ post.data.title }}</a>
-                    </h2>
-                </div>
-                <p>{{ post.data.description }}</p>
+                <h2>
+                    <a href="{{ post.url }}" class="post-link">{{ post.data.title }}</a>
+                </h2>
+
+                <p class="post-subtitle">
+                    <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+                    <span>&bull;</span>
+                    {{ post.data.description }}
+                </p>
             </article>
         {% endfor %}
     </section>

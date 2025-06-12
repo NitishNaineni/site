@@ -40,19 +40,24 @@ body {
 }
 
 /* === Base Typography === */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+}
 h1 {
     font-size: 2.25rem;
     margin: 0 0 1rem 0;
-    font-family: 'Poppins', sans-serif;
 }
+.post-content h2,
 h2 {
     font-size: 1.75rem;
-    font-family: 'Poppins', sans-serif;
+    margin: 1.5rem 0 1rem 0;
 }
+.post-content h3,
 h3 {
     font-size: 1.25rem;
-    font-family: 'Poppins', sans-serif;
+    margin: 1.5rem 0 1rem 0;
 }
+
 
 .container {
     max-width: 1100px;
@@ -131,7 +136,7 @@ main .container article > *:last-child {
     margin-bottom: 0;
 }
 
-/* === Blog Styles (Corrected) === */
+/* === Blog & Post Styles === */
 .post-list {
     margin-top: var(--content-padding);
 }
@@ -158,16 +163,11 @@ main .container article > *:last-child {
     transition-duration: 0.1s;
 }
 
-/* NEW: Style for the header containing date + title */
-.post-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
-}
-
-.post-item h2 {
-    margin: 0; /* Remove default margins */
+.post-item h2,
+main .container > article > h1 {
+    font-size: 1.75rem;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.2;
 }
 .post-item h2 a {
     text-decoration: none;
@@ -183,25 +183,50 @@ main .container article > *:last-child {
     z-index: 1;
 }
 
-/* UPDATED: Styles for the date "box" */
-.post-item .post-meta {
-    display: inline-block;
-    background-color: var(--text-color);
-    color: var(--bg-color);
-    font-size: 0.8rem;
-    font-weight: 700;
-    padding: 0.25em 0.75em;
+.post-subtitle,
+.post-meta {
+    font-size: 0.9rem;
+    color: var(--hover-text-color);
     margin: 0;
-    white-space: nowrap;
+}
+.post-meta {
+    margin-bottom: 2rem;
 }
 
-/* ... All other styles are unchanged ... */
-.post-content { margin-top: 2rem; line-height: 1.7; }
-.post-content h2, .post-content h3 { margin-top: 2.5rem; }
-.post-content img { max-width: 100%; height: auto; border-radius: 5px; }
-.video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 2rem 0; }
-.video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-mjx-container[display="true"] { display: block; margin: 1em auto; }
+/* KEY CHANGE: This single rule now targets the bullet in BOTH contexts */
+.post-subtitle span,
+.post-meta span {
+    margin: 0 0.5em;
+}
+
+.post-content {
+    margin-top: 2rem;
+    line-height: 1.7;
+}
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    margin: 2rem 0;
+}
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+mjx-container[display="true"] {
+    display: block;
+    margin: 1em auto;
+}
 
 @media (max-width: 768px) {
     :root {
@@ -210,8 +235,12 @@ mjx-container[display="true"] { display: block; margin: 1em auto; }
     }
 
     h1 { font-size: 1.8rem; }
-    h2 { font-size: 1.5rem; }
+    .post-item h2,
+    main .container > article > h1 {
+        font-size: 1.5rem;
+    }
     h3 { font-size: 1.15rem; }
+
     header { padding: 0; }
     header .container { padding-top: 9px; padding-bottom: 9px; }
     .logo a { font-size: 1.5rem; }
@@ -221,12 +250,4 @@ mjx-container[display="true"] { display: block; margin: 1em auto; }
     #theme-toggle { display: block; }
     #mobile-nav { display: block; }
     .header-controls { gap: 15px; }
-
-    /* Make date and title stack on mobile */
-    .post-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-        margin-bottom: 1rem;
-    }
 }

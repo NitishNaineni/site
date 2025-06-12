@@ -4,9 +4,16 @@ layout: layout.html
 <div class="container">
     <article>
         <h1>{{ title }}</h1>
+
         <p class="post-meta">
             <time datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time>
+
+            {% if description %}
+                <span>&bull;</span>
+                {{ description }}
+            {% endif %}
         </p>
+
         <div class="post-content">
             {{ content | raw }}
         </div>
